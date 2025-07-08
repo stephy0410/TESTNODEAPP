@@ -1,0 +1,16 @@
+name: Python Container Action
+
+on: push
+
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+    container:
+      image: python:3.10
+    steps:
+      - uses: actions/checkout@v4
+      - run: python --version
+      - name: Crear archivo y correrlo
+        run: |
+          echo 'print("Hola desde el contenedor de Python")' > script.py
+          python script.py
